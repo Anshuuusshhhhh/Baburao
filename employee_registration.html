@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Employee Registration</h1>
+    <form name="Work" method="post">
+        <fieldset>
+            <legend>Details: </legend>
+            <table>
+                <tr>
+                    <td>First Name: </td>
+                    <td><input type="text" name="FirstName"/></td>
+                </tr>
+                <tr>
+                    <td>Last Name: </td>
+                    <td><input type="text" name="LastName"/></td>
+                </tr>
+                <tr>
+                    <td>Age: </td>
+                    <td><input type="number" name="Age"/></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><input type="email" name="Email"/></td>
+                </tr>
+                <tr>
+                    <td>Phone Number:</td>
+                    <td><input type="text" name="Number"/></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><textarea name="Address" cols="30" rows="5">Type your address here</textarea></td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Qualifications</legend>
+            <table>
+                <tr>
+                    <td>High School: </td>
+                    <td><input type="text" name="Highschool"/></td>
+                </tr>
+                <tr>
+                    <td>Year of Graduation:</td>
+                    <td><input type="month" name="GradHigh"/></td>
+                </tr>
+                <tr>
+                    <td>Undergradute: </td>
+                    <td><input type="text" name="Undergradute"/></td>
+                </tr>
+                <tr>
+                    <td>Year of Graduation:</td>
+                    <td><input type="month" name="GradUnder"/></td>
+                </tr>
+                <tr>
+                    <td>Postgradute: </td>
+                    <td><input type="text" name="Undergradute"/></td>
+                </tr>
+                <tr>
+                    <td>Year of Graduation:</td>
+                    <td><input type="month" name="GradPost"/></td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Work</legend>
+            <table>
+                <tr>
+                    <td>Please upload your CV here:</td>
+                    <td><input type="file" name="CV"/></td>
+                </tr>
+                <tr>
+                    <td>Statement of purpose as to why we should hire you: </td>
+                    <td><textarea name="SOP" cols="30" rows="5"></textarea></td>
+                </tr>
+            </table>
+        </fieldset>
+        <table>
+            <tr>
+                <td><a href="thankyoupage.html"><button type="button" value="submit">Submit</button></a></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

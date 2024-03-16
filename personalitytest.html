@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="mbtiApp">
+<head>
+    <title>MBTI Test for Corporate World</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="mbtiController">
+        <h1>MBTI Test for Corporate World</h1>
+        <p>Answer the following 20 questions to determine if you are fit for the corporate world based on your MBTI type.</p>
+        <form>
+    <fieldset ng-repeat="question in questions">
+                <legend>{{question.text}}</legend>
+                <label ng-repeat="answer in question.answers">
+                    <input type="radio" name="q{{question.id}}" ng-model="answers[question.id]" ng-value="answer.value"> {{answer.text}}
+                </label>
+            </fieldset>
+            <button type="button" ng-click="submit()">Submit</button>
+        </form>
+        <div ng-show="results">
+            <h2>Results</h2>
+            <p>Your MBTI type is {{results.type}}.</p>
+            <p>Your score is {{results.score}} out of 20.</p>
+            <p>Based on your score, you are {{results.fit}} for the corporate world.</p>
+        </div>
+    </div>
+    
+    <script>
+        angular.module('mbtiApp', [])
+.controller('mbtiController', function($scope) {
+    $scope.questions = [
+        {
+            id: 1,
+            text: 'Do you prefer to work alone or in a group?',
+            answers: [
+                {value: 1, text: 'Alone'},
+                {value: 0, text: 'In a group'}
+            ]
+        },
+        {
+            id: 2,
+            text: 'Do you prefer to focus on facts or ideas?',
+            answers: [
+                {value: 0, text: 'Facts'},
+                {value: 1, text: 'Ideas'}
+            ]
+        },
+        // Add more questions here...
+    ];
+
+    $scope.answers = {};
+
+    $scope.submit = function() {
+        var score = 0;
+        angular.forEach($scope.answers, function(value, key) {
+            score += parseInt(value);
+        });
+
+        var type = '';
+        if (score >= 14) {
+            type = 'ISTJ';
+        } else if (score >= 12) {
+            type = 'ISFJ';
+        } else if (score >= 10) {
+            type = 'INFJ';
+        } else if (score >= 8) {
+            type = 'INTJ';
+        } else if (score >= 6) {
+            type = 'ESTJ';
+        } else if (score >= 4) {
+            type = 'ESFJ';
+        } else if (score >= 2) {
+            type = 'ENFJ';
+        } else {
+            type = 'ENTJ';
+        }
+
+        var fit = '';
+        if (type === 'ISTJ' || type === 'ISFJ' || type === 'INTJ' || type === 'ESTJ' || type === 'ESFJ') {
+            fit = 'very fit';
+        } else if (type === 'INFJ' || type === 'ENTJ' || type === 'ENFJ') {
+            fit = 'fit';
+        } else {
+            fit = 'not fit';
+        }
+
+        $scope.results = {
+            type: type,
+            score: score,
+            fit: fit
+        };
+    };
+});
+    </script>
+</body>
+</html>
