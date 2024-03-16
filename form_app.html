@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            margin-top: 5px; /* Added margin to separate error message from input field */
+        }
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #333;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+</head>
+<body ng-controller="mainController">
+    <div class="container">
+        <h2>Job Application Form</h2>
+        <form name="applicationForm" ng-submit="submitForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" ng-model="formData.name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" ng-model="formData.age" required>
+            <div class="error" ng-show="submitted && ageError">
+              <!-- Error messages for age validation -->
+            <span ng-show="applicationForm.age.$error.number && applicationForm.age.$dirty">
+               Age must be a number.
+            </span>
+            <span ng-show="applicationForm.age.$error.min">
+            You must be 18 years or older to apply.
+            </span>
+             </div>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" ng-model="formData.gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="contact">Contact Details:</label>
+            <input type="text" id="contact" ng-model="formData.contact" required>
+
+            <label for="education">Education Qualification:</label>
+            <input type="text" id="education" ng-model="formData.education" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" ng-model="formData.address" required>
+
+            <label for="skills">Skills:</label>
+            <input type="text" id="skills" ng-model="formData.skills" required>
+
+            <label for="experience">Past Job Experiences:</label>
+            <input type="text" id="experience" ng-model="formData.experience" required>
+
+            <button type="submit" class="submit-button">Submit Application</button>
+        </form>
+    </div>
+
+    <script>
+        angular.module('myApp', [])
+            .controller('mainController', function($scope) {
+                $scope.formData = {};
+                $scope.submitted = false;
+                $scope.ageError = false;
+    
+                $scope.submitForm = function() {
+                    $scope.submitted = true;
+                    if ($scope.applicationForm.$valid && $scope.formData.age >= 18) {
+                        // Form is valid and age is 18 or older, perform form submission action
+                        alert('Form submitted successfully');
+                    }
+                    else {
+                        $scope.checkAgeError();
+                    }
+                };
+    
+                $scope.checkAgeError = function() {
+                    if ($scope.applicationForm.age.$error.number && $scope.applicationForm.age.$dirty) {
+                        $scope.ageError = true;
+                    } else if ($scope.applicationForm.age.$error.min) {
+                        $scope.ageError = true;
+                    } else {
+                        $scope.ageError = false;
+                    }
+                };
+            });
+    </script>
+    
+</body>
+</html>

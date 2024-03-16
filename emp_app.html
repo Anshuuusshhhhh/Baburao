@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .department {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .department label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .apply-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .apply-button:hover {
+            background-color: #333;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="mainController">
+    <div class="container">
+        <h1>Job Application</h1>
+        <div class="department">
+            <label for="department">Select Department:</label>
+            <select id="department" ng-model="selectedDepartment" ng-options="dept for dept in departments">
+                <option value="">Select Department</option>
+            </select>
+        </div>
+        <button class="apply-button" ng-disabled="!selectedDepartment" ng-click="apply()">Apply</button>
+    </div>
+
+    <script>
+        angular.module('myApp', [])
+            .controller('mainController', function($scope) {
+                $scope.departments = ['HR', 'Marketing', 'Finance', 'Customer Service', 'R&D'];
+                $scope.selectedDepartment = '';
+
+                $scope.apply = function() {
+                    if ($scope.selectedDepartment) {
+                        alert('Applying for position in ' + $scope.selectedDepartment + ' department');
+                        // Perform application submission or redirect to confirmation page
+                    } else {
+                        alert('Please select a department');
+                    }
+                };
+            });
+    </script>
+</body>
+</html>
