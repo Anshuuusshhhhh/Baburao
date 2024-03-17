@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #5162c3;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .company-name {
+            font-size: 24px;
+        }
+        .tabs {
+            display: flex;
+        }
+        .tabs li {
+            list-style: none;
+            margin-left: 20px;
+            background-color: #5162c3;
+            color: #fff;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .faq {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .question {
+            padding: 15px;
+            cursor: pointer;
+            background-color: #5162c3;
+            color:#fff ;
+            position: relative;
+        }
+        .answer {
+            padding: 15px;
+            display: none;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .faq.open .arrow {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        .footer {
+            background-color: #5162c3;
+            color: #fff;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: left;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="company-name"><h2>TechSol</h2></div>
+            <nav>
+                <ul class="tabs">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+    </header>
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="question">
+                How do I create an account?
+                <div class="arrow">&#9660;</div>
+            </div>
+            <div class="answer">
+                To create an account, simply click on the "Sign Up" button on the top right corner of the page and fill out the required information.
+            </div>
+        </div>
+        <div class="faq">
+            <div class="question">
+                How do I reset my password?
+                <div class="arrow">&#9660;</div>
+            </div>
+            <div class="answer">
+                To reset your password, go to the login page and click on the "Forgot Password" link. Follow the instructions to reset your password.
+            </div>
+        </div>
+        <div class="faq">
+            <div class="question">
+                Can I change my email address?
+                <div class="arrow">&#9660;</div>
+            </div>
+            <div class="answer">
+                Yes, you can change your email address in your account settings. Go to the "Account" section and select "Change Email Address."
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll('.question');
+
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faq = question.parentNode;
+                const answer = faq.querySelector('.answer');
+                faq.classList.toggle('open');
+                if (faq.classList.contains('open')) {
+                    answer.style.display = 'block';
+                } else {
+                    answer.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <div class="footer">
+        <ul>
+            <li><a href="contactus.html">Contact us</li></a>
+            <li><a href="faqs.html">FAQs</li></a>
+        </ul>
+    </div>
+</body>
+</html>

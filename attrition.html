@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attrition Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #5162c3;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .company-name {
+            font-size: 24px;
+            color: #fff;
+        }
+        .tabs {
+            display: flex;
+        }
+        .tabs li {
+            list-style: none;
+            margin-left: 20px;
+            background-color: #5162c3;
+            color: #fff;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .feedback-section {
+            margin-top: 20px;
+        }
+        .feedback-option {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #5162c3;
+            color: #fff;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .feedback-option:hover {
+            background-color: #e0e0e0;
+        }
+        .feedback-content {
+            margin-top: 20px;
+        }
+        .feedback {
+            padding: 10px;
+            background-color: #eaeaea;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .feedback-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .feedback-message {
+            margin-bottom: 10px;
+        }
+        .footer {
+            background-color: #5162c3;
+            color: #fff;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: left;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="company-name"><h2>TechSol</h2></div>
+            <nav>
+                <ul class="tabs">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+    </header>
+    <div class="container">
+        <h2>Attrition Feedback</h2>
+        <div class="feedback-section">
+            <div class="feedback-option" onclick="showFeedback('option1')">Feedback 1</div>
+            <div class="feedback-option" onclick="showFeedback('option2')">Feedback 2</div>
+            <div class="feedback-option" onclick="showFeedback('option3')">Feedback 3</div>
+            <!-- Add more feedback options as needed -->
+        </div>
+        <div class="feedback-content">
+            <div class="feedback" id="option1">
+                <div class="feedback-title">Feedback 1</div>
+                <div class="feedback-message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor suscipit justo, sit amet efficitur risus faucibus sit amet.</div>
+            </div>
+            <div class="feedback" id="option2" style="display: none;">
+                <div class="feedback-title">Feedback 2</div>
+                <div class="feedback-message">Sed sit amet neque vitae augue euismod congue. Nulla sed nisi auctor, dapibus nisi ut, convallis leo.</div>
+            </div>
+            <div class="feedback" id="option3" style="display: none;">
+                <div class="feedback-title">Feedback 3</div>
+                <div class="feedback-message">Fusce tempor tincidunt ipsum non facilisis. Vivamus lobortis magna eu felis gravida, ut rhoncus nisl fringilla.</div>
+            </div>
+            <!-- Add more feedback content divs as needed -->
+        </div>
+    </div>
+
+    <script>
+        function showFeedback(option) {
+            const feedbackContent = document.querySelectorAll('.feedback');
+            feedbackContent.forEach(content => {
+                if (content.id === option) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <div class="footer">
+        <ul>
+            <li><a href="contactus.html">Contact us</li></a>
+            <li><a href="faqs.html">FAQs</li></a>
+        </ul>
+    </div>
+</body>
+</html>

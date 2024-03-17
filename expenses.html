@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Expenses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #5162c3;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .company-name {
+            font-size: 24px;
+        }
+        .tabs {
+            display: flex;
+        }
+        .tabs li {
+            list-style: none;
+            margin-left: 20px;
+            background-color: #5162c3;
+            color: #fff;
+        }
+        .container {
+            width: 90%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #5162c3;
+            color: #fff;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .filter-icon {
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .filter-options {
+            display: none;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: absolute;
+            z-index: 1;
+        }
+        .filter-option {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .footer {
+            background-color: #5162c3;
+            color: #fff;
+            padding: 20px;
+            position:absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: left;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="company-name"><h2>TechSol</h2></div>
+            <nav>
+                <ul class="tabs">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+    </header>
+    <div class="container">
+        <h2>List of Employees</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial No.</th>
+                    <th>Name <span class="filter-icon">&#9660;</span>
+                        <div class="filter-options">
+                            <div class="filter-option">Sort A-Z</div>
+                            <div class="filter-option">Sort Z-A</div>
+                        </div>
+                    </th>
+                    <th>Work Experience <span class="filter-icon">&#9660;</span>
+                        <div class="filter-options">
+                            <div class="filter-option">Low to High</div>
+                            <div class="filter-option">High to Low</div>
+                        </div>
+                    </th>
+                    <th>No. of Certifications <span class="filter-icon">&#9660;</span>
+                        <div class="filter-options">
+                            <div class="filter-option">Low to High</div>
+                            <div class="filter-option">High to Low</div>
+                        </div>
+                    </th>
+                    <th>Manager Rating <span class="filter-icon">&#9660;</span>
+                        <div class="filter-options">
+                            <div class="filter-option">Low to High</div>
+                            <div class="filter-option">High to Low</div>
+                        </div>
+                    </th>
+                    <th>No. of Projects <span class="filter-icon">&#9660;</span>
+                        <div class="filter-options">
+                            <div class="filter-option">Low to High</div>
+                            <div class="filter-option">High to Low</div>
+                        </div>
+                    </th>
+                    <th>Departments <span class="filter-icon">&#9660;</span>
+                        <div class="filter-options">
+                            <div class="filter-option">Sort A-Z</div>
+                            <div class="filter-option">Sort Z-A</div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>5 years</td>
+                    <td>3</td>
+                    <td>4.5</td>
+                    <td>8</td>
+                    <td>Marketing</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>7 years</td>
+                    <td>5</td>
+                    <td>4.7</td>
+                    <td>6</td>
+                    <td>Finance</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Michael Johnson</td>
+                    <td>3 years</td>
+                    <td>2</td>
+                    <td>4.2</td>
+                    <td>10</td>
+                    <td>Human Resources</td>
+                </tr>
+                <!-- Add more rows with data as needed -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const filterIcons = document.querySelectorAll('.filter-icon');
+        
+        filterIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                const options = icon.nextElementSibling;
+                options.style.display = options.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!event.target.classList.contains('filter-icon') && !event.target.classList.contains('filter-option')) {
+                const options = document.querySelectorAll('.filter-options');
+                options.forEach(option => {
+                    option.style.display = 'none';
+                });
+            }
+        });
+    </script>
+    <div class="footer">
+        <ul>
+            <li><a href="contactus.html">Contact us</li></a>
+            <li><a href="faqs.html">FAQs</li></a>
+        </ul>
+    </div>
+</body>
+</html>

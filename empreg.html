@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSol- Employee Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #5162c3;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .company-name {
+            font-size: 24px;
+        }
+        .tabs {
+            display: flex;
+        }
+        .tabs li {
+            list-style: none;
+            margin-left: 20px;
+            background-color: #5162c3;
+            color: #fff;
+        }
+        .footer {
+            background-color: #5162c3;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            text-align: left;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+        .center-align {
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            color: black;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        fieldset {
+            margin-bottom: 20px;
+            border: none;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type="file"] {
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #5162c3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5162c3;
+        }
+        a {
+    color: #fff; /* Change this to your desired color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    color: black; /* Change this to your desired color on hover */
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="company-name"><h2>TechSol</h2></div>
+            <nav>
+                <ul class="tabs">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+    </header>
+    <div class="container">
+        <h2>Employee Application Form</h2>
+        <form name="applicationForm" onsubmit="return validateForm()" method="post">
+            <fieldset>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea>
+            </fieldset>
+
+            <fieldset>
+                <label for="highSchool">Name of High School:</label>
+                <input type="text" id="highSchool" name="highSchool" required>
+                
+                <label for="graduationHigh">Year of Graduation (High School):</label>
+                <input type="month" id="graduationHigh" name="graduationHigh" required>
+                
+                <label for="undergradCollege">Name of Undergraduate College:</label>
+                <input type="text" id="undergradCollege" name="undergradCollege" required>
+                
+                <label for="graduationUnder">Year of Graduation (Undergraduate):</label>
+                <input type="month" id="graduationUnder" name="graduationUnder" required>
+                
+                <label for="postgradCollege">Name of Postgraduate College:</label>
+                <input type="text" id="postgradCollege" name="postgradCollege">
+                
+                <label for="graduationPost">Year of Graduation (Postgraduate):</label>
+                <input type="month" id="graduationPost" name="graduationPost">
+            </fieldset>
+
+            <fieldset>
+                <label for="cv">Upload CV file:</label>
+                <input type="file" id="cv" name="cv" required>
+                
+                <label for="sop">Statement of Purpose:</label>
+                <textarea id="sop" name="sop" required></textarea>
+            </fieldset>
+
+            <button type="submit" >Submit Application</button>
+        </form>
+    </div>
+    <div class="footer">
+        <ul>
+            <li><a href="contactus.html">Contact us</li></a>
+            <li><a href="faqs.html">FAQs</li></a>
+        </ul>
+    </div>
+
+    <script>
+        function validateForm() {
+            var dob = new Date(document.getElementById("dob").value);
+            var today = new Date();
+            var age = today.getFullYear() - dob.getFullYear();
+            var month = today.getMonth() - dob.getMonth();
+            if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+
+            if (age < 21) {
+                alert("You must be at least 21 years old to apply.");
+                return false;
+            }
+
+            var email = document.getElementById("email").value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            var phone = document.getElementById("phone").value;
+            if (phone.length !== 10) {
+                alert("Phone number must be 10 digits long.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
